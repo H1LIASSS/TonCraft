@@ -4,24 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Map</title>
-    <link rel="shortcut icon" href="content/logotype.png" />
+    <link rel="shortcut icon" href="content/logotype.png"/>
+    <link rel="stylesheet" href="css/mainstyles.css">
     <link rel="stylesheet" href="css/defaultvalues.css">
-        <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            width: 100%;
-        }
-        iframe {
-            border: none;
-            position: center;
-            width: 500px;
-            height: 500px;
-        }
+    <link rel="stylesheet" href="css/stars.css">
+    <style>
+     body, html {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    iframe {
+      border: none;
+      width: 700px;
+      height: 500px;
+    }
+
+    .logo {
+      font-family: 'Press Start 2P', arial, sans-serif;
+      position: absolute; 
+      bottom: 20px; /* Отступ от низа страницы */
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 20px;
+      font-weight: bold;
+      color: white;
+      background-color: black;
+      padding: 10px; /* Добавляет внутренние отступы */
+    }
     </style>
+
 </head>
 <body>
-     <iframe src="http://z3.joinserver.xyz:25610/" title="Dynmap"></iframe>
+    <script src="js/stars.js"></script>     
+    <iframe src="http://z3.joinserver.xyz:25610/" title="Dynmap"></iframe>
+    <div class='logo'>ip: TonCraft.com</div>
 </body>
 </html>

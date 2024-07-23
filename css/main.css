@@ -43,22 +43,6 @@
    
 }
 
-.star {
-    position: absolute;
-    top: 0;
-    width: 5px;
-    height: 5px;
-    background-color: white;
-    animation: fall linear forwards;
-    z-index:-1;
-}
-
-@keyframes fall {
-    to {
-        top: 100vh;
-    }
-}
-
 .move-up-down {
 
   transform: translateX(40%);

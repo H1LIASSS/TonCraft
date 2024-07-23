@@ -60,3 +60,11 @@
                 fillScreenWithStars();
               }
         }
+
+        // Заполняем экран звездочками при загрузке
+        fillScreenWithStars();
+
+        // Добавляем новые звездочки каждую секунду
+        setInterval(addFallingStars, 25);
+
+        document.addEventListener("visibilitychange",deleteStars);

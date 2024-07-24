@@ -52,10 +52,9 @@
     to {
         top: 100vh;
     }
-}
-
+}  
 
 body {
-    background-color: black;
+    background: black;
     overflow: hidden;
 }

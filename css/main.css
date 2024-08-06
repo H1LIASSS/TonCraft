@@ -1,12 +1,29 @@
-
-.navbar{
-    margin: 4vh 2px;
+#navbar {
+    display: flex;
+    width: 100vw;
+    gap: 40px;
+    margin: 4vh 0;
+    align-items: flex-end;
 }
-.logo {
-    font-family: 'Press Start 2P', ariel, normal;
-    position: absolute;
+
+#sidebar {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    gap: 20px;
+    top: 0;
+    right: 0;
+    height: 80vh;
+    width: 50vw;
+    z-index: 999;
+    align-items: flex-start;
+    background-color: wheat;
+}
+
+#logo {
+    /* position: absolute;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%); */
     font-size: 50px;
     font-weight: bold;
     color: white;
@@ -15,17 +32,29 @@
 
 .btn {
     background-color: mediumpurple;
-    font-family: 'Press Start 2P', ariel, normal;
-    position: inherit;
-    left: 50%;
     font-size: 30px;
     font-weight: bold;
     color: white;
-
+    margin: 0 12px;
+    padding: 4px 6px;
+    transition: 200ms;
+    border: rgb(97, 73, 144) 4px solid;
 }
+
+.btn:hover {
+    background-color: rgba(147, 112, 216, 0.749);
+    transition: 200ms;
+    cursor: pointer;
+}
+
+.btn:active {
+    background-color: rgba(147, 112, 216, 0.302);
+    transition: 150ms;
+    color: rgb(173, 173, 173);
+}
+
 .info {
     background-color: mediumpurple;
-    font-family: 'Press Start 2P', ariel, normal;
     position: inherit;
     font-size: 30px;
     font-weight: bold;
@@ -34,84 +63,103 @@
     width: fit-content;
 }
 
-.players{
-    
-}
-
-.earth{
-     position: inherit;
-   
-}
+.players {}
 
 .move-up-down {
+    scale: 0.6;
 
-  transform: translateX(40%);
-     scale: 0.6;
+    position: relative;
 
-position: relative;
+    animation-name: move;
 
-animation-name: move;
+    animation-duration: 2s;
 
-animation-duration: 2s;
+    animation-direction: alternate;
 
-animation-direction: alternate;
+    animation-timing-function: ease-in-out;
 
-animation-timing-function: ease-in-out;
-
-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
 
 }
-@keyframes move {
 
-from {top: 0px;}
+/* @keyframes move {
 
-to {top: 50px;}
+    from {
+        top: 0px; 
+    }
 
-}
-.upperbuttons{
-    display: flex;
-    width: 100%;
-    align-items: flex-end;
-    justify-content: space-between;
-}
+    to {
+        top: 50px;
+    }
 
-.leftside{
-    display:flex;
-    gap: 80px;
-}
+} */
 
-.rightside{
-    display:flex;
-    gap: 35px;
+.nav-buttons {
+    flex: 1;
+    text-wrap: no-wrap;
+    margin: 0 100px;
 }
 
+.nav-end {
+    text-align: end;
+}
 
-            .dropdown {
-            
-            position: relative;
-            display: inline-block;
-        }
+.dropdown {
 
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 35px 50px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
+    position: relative;
+    display: inline-block;
+}
 
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 35px 50px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
 
-        .dropdown-content a:hover {
-            background-color: #f1f1f1;
-        }
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
 
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* new */
+#earth-container {
+    width: 100vw;
+}
+
+#earth {
+    display: block;
+    margin: auto;
+}
+
+@media only screen and (min-width: 1201px) {
+    #sidebar {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .hideOnMobile {
+        display: none !important;
+    }
+}
+
+/* @media only screen and (max-width: 600px) {
+
+    /*Big smartphones [426px -> 600px]*/
+
+/*}*/
+
+/* @media only screen and (max-width: 425px) {} */

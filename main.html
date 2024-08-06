@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <head>
     <title>TonCraft</title>
     <meta charset="UTF-8">
@@ -8,40 +9,64 @@
     <link rel="stylesheet" href="css/main.css">
 
     <script>
-    var userLang = navigator.language || navigator.userLanguage; 
-    var online = 0;   
-    if(userLang!="ru")
-        userLang = "en";
+        var userLang = navigator.language || navigator.userLanguage;
+        var online = 0;
+        if (userLang != "ru")
+            userLang = "en";
     </script>
-    <html lang=userLang> 
-    
-</head>
-<body>
-  <div class="stars"> 
-    <script src="js/stars.js"></script>  
+    <html lang=userLang>
 
-  <div class="navbar">  
-    <div class = "upperbuttons">
-        <div class = 'leftside'>
-            <button class="btn",id="lang", onclick = "changeLanguange()">EN</button>
-        <div class="dropdown">
+</head>
+
+<body>
+    <!-- <div class="stars">
+        <script src="js/stars.js"></script> -->
+
+    <!-- desktop nav bar: -->
+    <nav id="navbar" class="hideOnMobile">
+        <div class='nav-buttons'>
+            <button class="btn" id="lang" , onclick="changeLanguange()">EN</button>
+            <div class="dropdown">
                 <button class="dropbtn">Other</button>
                 <div class="dropdown-content">
-                    <a href="#", onclick="location.href='./earn.html'"\>Earn</a>
-                    <a href="#", onclick="location.href='./partners.html'"\>Partners</a>
+                    <a href="#" , onclick="location.href='./earn.html'" \>Earn</a>
+                    <a href="#" , onclick="location.href='./partners.html'" \>Partners</a>
                 </div>
-        </div> 
-            <button class="btn", onclick="location.href='./donate.html'">Donate</button>
+            </div>
+            <button class="btn" , onclick="location.href='./donate.html'">Donate</button>
         </div>
-    <div class='logo'>TonCraft</div>
-        <div class = 'rightside'>
-            <button class="btn", onclick="location.href='./map.html'">Map</button>                 
-            <button class="btn", onclick="location.href='./earn.html'">Earn</button>
+        <div id='logo'>TonCraft</div>
+        <div class='nav-buttons nav-end'>
+            <button class="btn" , onclick="location.href='./map.html'">Map</button>
+            <button class="btn" , onclick="location.href='./earn.html'">Earn</button>
         </div>
+    </nav>
+
+    <!-- sidebar which is shown on mobile devices: -->
+    <nav id="sidebar" class="hideOnDesktop">
+        <div class="dropdown">
+            <button class="dropbtn">Other</button>
+            <div class="dropdown-content">
+                <a href="#" , onclick="location.href='./earn.html'" \>Earn</a>
+                <a href="#" , onclick="location.href='./partners.html'" \>Partners</a>
+            </div>
+        </div>
+        <button class="btn" , onclick="location.href='./donate.html'">Donate</button>
+        <button class="btn" , onclick="location.href='./map.html'">Map</button>
+        <button class="btn" , onclick="location.href='./earn.html'">Earn</button>
+
+        <button class="btn" style="margin-top: auto; margin-bottom: 10%;" id="lang" ,
+            onclick="changeLanguange()">EN</button>
+
+        <svg xmlns="http://www.w3.org/2000/svg" style="color: white" height="24px" viewBox="0 -960 960 960" width="24px"
+            fill="#5f6368">
+            <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+        </svg>
+    </nav>
+
+    <div id="earth-container">
+        <img id='earth' src="content/earth.png" , onhover="func()" , class="move-up-down" />
     </div>
-   </div>
-   <div class="container"> 
-      <img src="content/earth.png", onhover = "func()", class = "move-up-down"/>
-   </div>
 </body>
+
 </html>

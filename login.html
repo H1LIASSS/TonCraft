@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/defaultvalues.css">
+
+    <!-- login form styles -->
+    <style>
+        body {
+            background-color: rgb(47, 47, 47);
+        }
+
+        .login-box {
+            position: relative;
+            background-color: black;
+            height: 60vh;
+            width: 26vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2%;
+            max-width: 600px;
+            max-height: 800px;
+            min-width: 360px;
+            min-height: 540px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            box-sizing: border-box;
+
+            border: rgb(210, 233, 233) 6px solid;
+        }
+
+        .login-box-text {
+            text-transform: lowercase;
+            color: white;
+            margin: 0;
+        }
+
+        .login-form {
+            box-sizing: border-box;
+            width: 46%;
+            height: 8%;
+        }
+
+        .login-btn {
+            margin: 0 !important;
+        }
+
+        .login-input {
+            width: 100%;
+            height: 100%;
+        }
+
+        .input-container {
+            position: relative;
+        }
+
+
+
+        .star-container {
+            width: 4.5rem;
+            height: 2.5rem;
+            filter: drop-shadow(0 0 0.5rem rgb(0, 0, 0));
+        }
+
+        #wrap-star {
+            mask: url("./content/star.svg");
+            -webkit-mask-box-image: url("./content/star.svg");
+        }
+    </style>
+</head>
+
+
+<body>
+    <!-- login form html -->
+    <div class="login-box" style="margin: auto; margin-top: 100px !important;">
+        <div class="star-container"
+            style=" position: absolute; top: 0; left: 0; transform: translate(-1.3rem, -1.3rem);">
+            <img src="./content/star.svg" alt="" id="wrap-star">
+        </div>
+
+        <h2 class="login-box-text" style="font-size: 1rem; margin: 1% 0;">Ваш никнейм</h2>
+        <div class="login-form input-container">
+            <input type="text" class="login-form login-input" />
+            <img src="./content/star.svg" alt=""
+                style="position: absolute; top: 0; right: 0; transform: translate(1rem, -1rem);">
+        </div>
+
+        <button class="btn login-form login-btn " style="font-size: 2em; position: relative;">Login
+            <img src="./content/star.svg" alt=""
+                style="position: absolute; bottom: 0; left: 0; transform: translate(-1rem, 1rem);">
+        </button>
+
+        <div class="star-container" style="position: absolute; bottom: 0; right: 0; ">
+            <img src="./content/star.svg" alt=""
+                style="position: absolute; bottom: 0; right: 0; transform: translate(1rem, 1rem); z-index: 999;">
+        </div>
+
+    </div>
+</body>
+
+</html>

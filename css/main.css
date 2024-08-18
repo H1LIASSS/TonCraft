@@ -1,4 +1,7 @@
 #navbar {
+    background-color: red;
+
+    height: 80px;
     display: flex;
     width: 100vw;
     gap: 40px;
@@ -7,6 +10,7 @@
 }
 
 #sidebar {
+    padding-top: 1vh;
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -14,10 +18,27 @@
     top: 0;
     right: 0;
     height: 80vh;
-    width: 50vw;
+    width: 100%;
+    z-index: 6;
+    align-items: center;
+    background-color: rgba(159, 159, 159, 0.275);
+    backdrop-filter: blur(2px);
+}
+
+
+.sidebar-btn {
+    height: 60px;
+    width: 60px;
+    fill: white;
+    position: absolute;
+    top: 1vh;
+    right: 1vh;
+    flex: 1;
     z-index: 999;
-    align-items: flex-start;
-    background-color: wheat;
+}
+
+#closeIcon {
+    filter: drop-shadow(0px 0px 20px rgb(0, 0, 0));
 }
 
 #logo {
@@ -31,14 +52,20 @@
 }
 
 .btn {
+    padding: 14px 8px;
+
     background-color: mediumpurple;
     font-size: 30px;
     font-weight: bold;
     color: white;
-    margin: 0 12px;
-    padding: 4px 6px;
+
     transition: 200ms;
     border: rgb(97, 73, 144) 4px solid;
+}
+
+.sidebar-btn-container {
+    width: 100% !important;
+    background-color: rgba(147, 112, 216, 0.767);
 }
 
 .btn:hover {
@@ -53,6 +80,17 @@
     color: rgb(173, 173, 173);
 }
 
+.hide {
+    display: none !important;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(245, 245, 220, 0.512);
+}
+
+.error {
+    color: red !important;
+}
+
 .info {
     background-color: mediumpurple;
     position: inherit;
@@ -63,9 +101,7 @@
     width: fit-content;
 }
 
-.players {}
-
-.move-up-down {
+/* .move-up-down {
     scale: 0.6;
 
     position: relative;
@@ -80,7 +116,7 @@
 
     animation-iteration-count: infinite;
 
-}
+} */
 
 /* @keyframes move {
 
@@ -96,8 +132,7 @@
 
 .nav-buttons {
     flex: 1;
-    text-wrap: no-wrap;
-    margin: 0 100px;
+    text-wrap: nowrap;
 }
 
 .nav-end {
@@ -136,18 +171,23 @@
 
 /* new */
 #earth-container {
+    background-color: rgba(245, 222, 179, 0.501);
     width: 100vw;
+    margin: auto 0;
 }
 
 #earth {
     display: block;
-    margin: auto;
+    width: 30%;
+    height: 30%;
+    margin: 10vh auto;
 }
 
 @media only screen and (min-width: 1201px) {
-    #sidebar {
-        display: none;
+    .hideOnDesktop {
+        display: none !important;
     }
+
 }
 
 @media only screen and (max-width: 1200px) {

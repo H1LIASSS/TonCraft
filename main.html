@@ -8,21 +8,17 @@
     <link rel="stylesheet" href="css/defaultvalues.css">
     <link rel="stylesheet" href="css/main.css">
 
-    <script>
-        var userLang = navigator.language || navigator.userLanguage;
-        var online = 0;
-        if (userLang != "ru")
-            userLang = "en";
-    </script>
     <html lang=userLang>
 
+    <style>
+
+    </style>
 </head>
 
 <body>
     <!-- <div class="stars">
         <script src="js/stars.js"></script> -->
 
-    <!-- desktop nav bar: -->
     <nav id="navbar" class="hideOnMobile">
         <div class='nav-buttons'>
             <button class="btn" id="lang" , onclick="changeLanguange()">EN</button>
@@ -39,11 +35,26 @@
         <div class='nav-buttons nav-end'>
             <button class="btn" , onclick="location.href='./map.html'">Map</button>
             <button class="btn" , onclick="location.href='./earn.html'">Earn</button>
+
         </div>
     </nav>
 
+    <!-- buttons to toggle sidebar -->
+    <svg class="sidebar-btn hideOnDesktop" id="menuIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"
+        onclick="toggleSidebar()">
+        <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+    </svg>
+
+    <svg class="sidebar-btn hideOnDesktop" onclick="toggleSidebar()" id="closeIcon" xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 -960 960 960" style="display: none   ;">
+        <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+    </svg>
+
     <!-- sidebar which is shown on mobile devices: -->
-    <nav id="sidebar" class="hideOnDesktop">
+    <nav id="sidebar" style="display: none;" class="hideOnDesktop">
+        <button class="sidebar-btn-container btn" , onclick="location.href='./donate.html'">Donate</button>
+        <button class="sidebar-btn-container btn" , onclick="location.href='./map.html'">Map</button>
+        <button class="sidebar-btn-container btn" , onclick="location.href='./earn.html'">Earn</button>
         <div class="dropdown">
             <button class="dropbtn">Other</button>
             <div class="dropdown-content">
@@ -51,22 +62,57 @@
                 <a href="#" , onclick="location.href='./partners.html'" \>Partners</a>
             </div>
         </div>
-        <button class="btn" , onclick="location.href='./donate.html'">Donate</button>
-        <button class="btn" , onclick="location.href='./map.html'">Map</button>
-        <button class="btn" , onclick="location.href='./earn.html'">Earn</button>
 
-        <button class="btn" style="margin-top: auto; margin-bottom: 10%;" id="lang" ,
-            onclick="changeLanguange()">EN</button>
-
-        <svg xmlns="http://www.w3.org/2000/svg" style="color: white" height="24px" viewBox="0 -960 960 960" width="24px"
-            fill="#5f6368">
-            <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
-        </svg>
+        <button class="btn" style="margin-top: auto;" id="lang" , onclick="changeLanguange()">EN</button>
     </nav>
 
-    <div id="earth-container">
+    <!-- TODO: work on the onhover func & move-up-down class -->
+    <div id="earth-container" class="">
         <img id='earth' src="content/earth.png" , onhover="func()" , class="move-up-down" />
     </div>
+
+    <!-- desktop nav bar: -->
+
+
+    <script>
+        let menuIcon = document.getElementById("menuIcon");
+        let closeIcon = document.getElementById("closeIcon");
+        let sidebar = document.getElementById("sidebar");
+        let isSidebar = false;
+        var userLang = navigator.language || navigator.userLanguage;
+        var online = 0;
+        if (userLang != "ru")
+            userLang = "en";
+
+        function toggleSidebar() {
+            if (isSidebar) {
+                closeIcon.style.display = "none";
+                menuIcon.style.display = "block";
+                sidebar.style.display = "none";
+            }
+            else {
+                menuIcon.style.display = "none";
+                closeIcon.style.display = "block";
+                sidebar.style.display = "flex";
+            }
+            isSidebar = !isSidebar;
+        }
+
+        function closeSidebar() {
+            menuIcon.style.display = "block";
+            closeIcon.style.display = "none";
+            sidebar.style.display = "none";
+            isSidebar = false;
+        }
+
+        function handleWidthChange(e) {
+            if (e.matches) { // Screen width is more than 1200px
+                closeSidebar();
+            }
+        }
+        const mediaQuery = window.matchMedia("(min-width: 1201px)")
+        mediaQuery.addEventListener('change', handleWidthChange);
+    </script>
 </body>
 
 </html>

@@ -1,0 +1,21 @@
+{
+  "name": "toncraft",
+  "version": "1.0.0",
+  "main": "./loginForm/server.js",
+  "scripts": {
+    "devStart": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "Cloudvy",
+  "license": "MIT",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "rcon-client": "^4.2.4"
+  },
+  "devDependencies": {
+    "ejs": "^3.1.10",
+    "nodemon": "^3.1.4"
+  }
+}

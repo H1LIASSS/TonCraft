@@ -30,14 +30,15 @@ app.post('/', async (req,res)=>{
 
         //REMOVE: 
         console.log(`nickname(serv): ${nickname}`);
-        // TODO: make it so that it checks whether the player is online first
         const rcon = await Rcon.connect(rconConfig);
         const verifCode = generateVerifCode();  
-        const response = await rcon.send(`msg ${nickname} Your verification code is: ${verifCode}`);
+        // const response = await rcon.send(`msg ${nickname} Your verification code is: ${verifCode}`);
+        const response = await rcon.send(`kick ${nickname} Your verification code is: ${verifCode}`);
         await rcon.end();
 
-        //checks whether or not the player is online
-        if(!response){
+        console.log(`${response.includes(`вышел`)}`);
+        //checks whether or not the player was online
+        if(response.includes(`вышел`)){
             //stores the verification code for 2 minutes
             verificationCodes[nickname] = verifCode;
             setTimeout(()=>{

@@ -15,27 +15,55 @@
     </style>
 </head>
 
-<body>
+<body style='background-color: rgba(48, 27, 70, 0.899);'>
     <!-- <div class="stars">
         <script src="js/stars.js"></script> -->
 
     <nav id="navbar" class="hideOnMobile">
         <div class='nav-buttons'>
-            <button class="btn" id="lang" , onclick="changeLanguange()">EN</button>
-            <div class="dropdown">
-                <button class="dropbtn">Other</button>
+            <!-- TODO: add functionality -->
+            <div class="lang-change">
+                <img src="./content//languages/correctUK.png" alt="">
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                    fill="white">
+                    <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+                </svg> -->
+            </div>
+
+            <!-- <button class="btn" id="lang" , onclick="changeLanguange()">EN</button> -->
+            <!-- <div class="dropdown">
+                <button class="dropbtn nav-btn"> </button>
                 <div class="dropdown-content">
                     <a href="#" , onclick="location.href='./earn.html'" \>Earn</a>
                     <a href="#" , onclick="location.href='./partners.html'" \>Partners</a>
                 </div>
-            </div>
-            <button class="btn" , onclick="location.href='./donate.html'">Donate</button>
+            </div> -->
+            <button class="nav-btn">Other</button>
+            <button class="nav-btn" , onclick="location.href='./donate.html'">Donate</button>
         </div>
         <div id='logo'>TonCraft</div>
         <div class='nav-buttons nav-end'>
-            <button class="btn" , onclick="location.href='./map.html'">Map</button>
-            <button class="btn" , onclick="location.href='./earn.html'">Earn</button>
+            <button class="nav-btn" , onclick="location.href='./map.html'">Map</button>
+            <!-- <button class="nav-btn" , onclick="location.href='./earn.html'">Earn</button> -->
+            <a class="pc-container" href="./personalCabinet.html">
+                <img src="./content/skin-icon.png" alt="" class="skin-icon">
+                <p id="pc-name">Hutsul</p>
+                <div class="pc-balance">
+                    <img src="./content/dollar.png" class="currency-img" alt="">
+                    <p id="pc-balance-val">69</p>
+                </div>
+            </a>
 
+            <!-- <a href="./personalCabinet.html" class="pc-wrapper">
+                <div class="pc-container" style="outline: 1px solid green">
+                    <img src="./content/skin-icon.png" alt="" class="skin-icon">
+                    <p id="pc-name">Hutsul</p>
+                    <a class="pc-balance">
+                        <img src="./content/dollar.png" class="currency-img" alt="">
+                        <p id="pc-balance-val">69</p>
+                    </a>
+                </div>
+            </a> -->
         </div>
     </nav>
 
@@ -46,30 +74,33 @@
     </svg>
 
     <svg class="sidebar-btn hideOnDesktop" onclick="toggleSidebar()" id="closeIcon" xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 -960 960 960" style="display: none   ;">
+        viewBox="0 -960 960 960" style="display: none;">
         <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
     </svg>
 
     <!-- sidebar which is shown on mobile devices: -->
     <nav id="sidebar" style="display: none;" class="hideOnDesktop">
-        <button class="sidebar-btn-container btn" , onclick="location.href='./donate.html'">Donate</button>
-        <button class="sidebar-btn-container btn" , onclick="location.href='./map.html'">Map</button>
-        <button class="sidebar-btn-container btn" , onclick="location.href='./earn.html'">Earn</button>
-        <div class="dropdown">
+        <button class="sidebar-btn-container nav-btn" , onclick="location.href='./donate.html'"
+            style="margin-top: 20px;">Donate</button>
+        <button class="sidebar-btn-container nav-btn" , onclick="location.href='./map.html'">Map</button>
+        <button class="sidebar-btn-container nav-btn" , onclick="location.href='./earn.html'">Earn</button>
+        <!-- <div class="dropdown">
             <button class="dropbtn">Other</button>
             <div class="dropdown-content">
                 <a href="#" , onclick="location.href='./earn.html'" \>Earn</a>
                 <a href="#" , onclick="location.href='./partners.html'" \>Partners</a>
             </div>
-        </div>
+        </div> -->
 
-        <button class="btn" style="margin-top: auto;" id="lang" , onclick="changeLanguange()">EN</button>
+        <img src="./content//languages/correctUK.png"
+            style="height: 40px; width: auto; margin-top: auto; margin-bottom: 10px;" alt="">
+        <!-- <button class="btn" style="margin-top: auto;" id="lang" , onclick="changeLanguange()">EN</button> -->
     </nav>
 
     <!-- TODO: work on the onhover func & move-up-down class -->
-    <div id="earth-container" class="">
+    <!-- <div id="earth-container" class="">
         <img id='earth' src="content/earth.png" , onhover="func()" , class="move-up-down" />
-    </div>
+    </div> -->
 
     <!-- desktop nav bar: -->
 

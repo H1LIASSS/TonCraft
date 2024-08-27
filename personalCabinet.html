@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Cabinet</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="content/logotype.png" />
+    <link rel="stylesheet" href="css/defaultvalues.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <html lang=userLang>
+
+    <style>
+        /* * {
+            outline: 1px solid red;
+        } */
+
+
+
+        section {
+            position: relative;
+            min-height: 100px;
+            padding: 80px 20vw;
+        }
+
+        .custom-shape-divider-top-1724516293 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .custom-shape-divider-top-1724516293 svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 104px;
+        }
+
+        .custom-shape-divider-top-1724516293 .shape-fill {
+            fill: #90d7ee;
+        }
+
+        /** For mobile devices **/
+        @media (max-width: 767px) {
+            .custom-shape-divider-top-1724516293 svg {
+                width: calc(116% + 1.3px);
+                height: 86px;
+            }
+        }
+
+        .cards-container {
+            margin-top: 40px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: #aed2ff;
+            width: 80%;
+            max-width: 360px;
+            border-radius: 8px;
+            min-height: 140px;
+            display: flex;
+            flex-direction: column;
+            color: white;
+            gap: 4px;
+            padding: 10px 14px;
+
+        }
+
+        .player {
+            /* margin: 6px 0; */
+            color: black;
+            width: 40%;
+            height: 10%;
+        }
+
+        #withdraw-btn {
+            background-color: rgb(242, 242, 0);
+            border: none;
+            padding: 6px 14px;
+            border-radius: 8px;
+            margin-top: 10px;
+            transition: 150ms ease-in;
+        }
+
+        #withdraw-btn:hover {
+            background-color: rgb(176, 176, 0);
+            transition: 150ms ease-out;
+            cursor: pointer;
+        }
+
+        .player {
+            display: flex;
+            align-items: center;
+        }
+
+        #pc-logo {
+            display: block;
+            text-align: center;
+            margin: 30px 0px;
+            font-size: 2.5rem;
+            color: white;
+            text-decoration: none;
+            transition: 200ms;
+
+        }
+
+        #pc-logo:hover {
+            color: rgb(221, 221, 221);
+            transition: 200ms;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: none;
+            background-color: #3a7cb3 !important;
+            /* background-color: #90d7ee !important; */
+
+            overflow-y: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <a id='pc-logo' href="./main.html">TonCraft
+    </a>
+
+
+    <div class="cards-container">
+        <div class="card">
+            <div class="player" style="margin: 0 0 .6rem; text-align: center;">
+                <img src="./content/skin-icon.png" style="height: 1.6rem; width: auto;" alt="">
+                <p id="pc-name">Hutsul</p>
+            </div>
+            <div class="card-property">Role: </div>
+            <div class="card-property">Country: </div>
+            <div class="card-property">Email: </div>
+            <div class="card-property" style="margin-bottom: auto;">2FA: </div>
+        </div>
+        <div class="card">
+            <div class="card-balance" style="margin: 0 0 auto;">
+                <p style="margin: 0 0 10px;">Balance</p>
+            </div>
+            <div class="card-property" style="color: rgb(66, 66, 66)">Pirates: </div>
+            <div class="card-property" style="color: rgb(66, 66, 66); margin: 0 0 auto;">Coins:</div>
+
+            <button id="withdraw-btn">Withdraw</button>
+        </div>
+    </div>
+
+    <!-- <section style="background-color: #1232a2; height: 100px; position: absolute; bottom: 0; left: 0; right: 0;">
+        <h1 style="width: fit-content;color: gray; font-size: 1rem; margin-top: 80px; white-space: nowrap;">
+            Выведено:
+            6,500$</h1>
+        <div class="custom-shape-divider-top-1724516293">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                preserveAspectRatio="none">
+                <path
+                    d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+                    class="shape-fill"></path>
+            </svg>
+        </div>
+    </section> -->
+
+    <footer
+        style="position: absolute; bottom: 1rem; width: 100%; text-align: center; color: #D4E9FF; font-size: 1.2rem;">
+        <p>Withdrawn: 6,500$</p>
+    </footer>
+</body>
+
+</html>

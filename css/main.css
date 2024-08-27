@@ -1,12 +1,11 @@
 #navbar {
-    background-color: red;
-
     height: 80px;
     display: flex;
-    width: 100vw;
-    gap: 40px;
-    margin: 4vh 0;
-    align-items: flex-end;
+    width: 80vw;
+    max-width: 1800px;
+    /* gap: 600px; */
+    justify-content: space-between;
+    margin: 2vh auto;
 }
 
 #sidebar {
@@ -45,20 +44,19 @@
     /* position: absolute;
     left: 50%;
     transform: translateX(-50%); */
-    font-size: 50px;
-    font-weight: bold;
+    font-size: 3rem;
     color: white;
-    background-color: black;
+    align-self: center;
 }
 
 .btn {
     padding: 14px 8px;
 
     background-color: mediumpurple;
-    font-size: 30px;
+    font-size: 1.5rem;
     font-weight: bold;
     color: white;
-
+    z-index: 3;
     transition: 200ms;
     border: rgb(97, 73, 144) 4px solid;
 }
@@ -91,16 +89,6 @@
     color: red !important;
 }
 
-.info {
-    background-color: mediumpurple;
-    position: inherit;
-    font-size: 30px;
-    font-weight: bold;
-    color: white;
-
-    width: fit-content;
-}
-
 /* .move-up-down {
     scale: 0.6;
 
@@ -130,9 +118,36 @@
 
 } */
 
+/* container for nav-buttons */
 .nav-buttons {
     flex: 1;
     text-wrap: nowrap;
+    display: flex;
+    justify-content: space-around;
+    gap: 2vw;
+    max-width: 500px;
+}
+
+/* nav-buttons themselves */
+.nav-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    transition: 200ms ease-out;
+}
+
+.nav-btn:hover {
+    filter: drop-shadow(0px 0px 5px white);
+    transition: 200ms ease-in;
+    cursor: pointer;
+}
+
+.nav-btn:active {
+    color: rgb(202, 202, 202);
+    filter: drop-shadow(0px 0px 7px white);
+
+    transition: 100ms !important;
 }
 
 .nav-end {
@@ -182,6 +197,86 @@
     height: 30%;
     margin: 10vh auto;
 }
+
+.lang-change {
+    align-content: center;
+    height: 100%;
+    display: flex;
+    align-self: center;
+    gap: 6px;
+    align-items: center;
+    margin-left: 10%;
+}
+
+.lang-change>img {
+    height: 40%;
+    width: auto;
+}
+
+/* Personal Cabinet */
+/* .pc-wrapper {
+    outline: 1px solid red;
+    height: 50%;
+    text-decoration: none;
+    align-self: center;
+    display: inline-block;
+} */
+.pc-container>* {
+    transition: 200ms;
+}
+
+.pc-container,
+.pc-balance {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.pc-container {
+    color: white;
+
+    text-decoration: none;
+    background-color: rgb(44, 193, 213);
+    align-self: center;
+    height: 50%;
+}
+
+.pc-container:hover {
+    background-color: rgba(44, 193, 213, 0.7);
+
+}
+
+
+
+.pc-container>img {
+    user-select: none;
+
+    height: 100%;
+    width: auto;
+}
+
+#pc-name {
+    margin: 0 6px;
+}
+
+.pc-balance {
+
+    height: 100%;
+    background-color: rgb(85, 85, 85);
+    min-width: 60px;
+    justify-content: center;
+    gap: 4%;
+}
+
+.pc-balance>img {
+    user-select: none;
+
+
+    height: 30%;
+    width: auto;
+}
+
+
 
 @media only screen and (min-width: 1201px) {
     .hideOnDesktop {

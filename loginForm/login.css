@@ -1,0 +1,95 @@
+        /* * {
+            outline: 1px solid red;
+        } */
+
+        html,
+        body {
+            min-height: 100vh;
+
+        }
+
+        body {
+            background-color: rgb(47, 47, 47);
+            margin: none !important;
+        }
+
+        .login-box {
+            position: relative;
+            background-color: black;
+            height: 60vh;
+            width: 60vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2%;
+            max-width: 500px;
+            max-height: 900px;
+            min-width: 360px;
+            min-height: 540px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            box-sizing: border-box;
+
+            border: rgb(210, 233, 233) 6px solid;
+        }
+
+        .login-box-text {
+            text-transform: lowercase;
+            color: white;
+            margin: 0;
+        }
+
+        .login-form {
+            box-sizing: border-box;
+            border: none;
+            width: 46%;
+            height: 8%;
+            max-width: 220px;
+            max-height: 60px;
+            min-width: 200px;
+        }
+
+        .login-form:focus {
+            outline: 2px solid rgb(116, 116, 116);
+            outline-offset: -2px;
+        }
+
+        #verifCode {
+            background-color: #3e5055;
+            color: white;
+        }
+
+        #login-btn {
+            height: 12%;
+        }
+
+        .login-input {
+            width: 100%;
+            height: 100%;
+            font-size: 3rem;
+        }
+
+        .input-container {
+            position: relative;
+        }
+
+
+
+        .star-container {
+            width: 4.5rem;
+            height: 2.5rem;
+            filter: drop-shadow(0 0 0.5rem rgb(0, 0, 0));
+        }
+
+        #wrap-star {
+            mask: url("../content/star.svg");
+            -webkit-mask-box-image: url("../content/star.svg");
+        }
+
+        #textbox {
+            width: 90%;
+            font-size: 14px;
+            white-space: normal;
+            text-align: center;
+        }

@@ -1,3 +1,9 @@
+// function that displays login pop up window when user click connect
+function connectAccount(){
+    let connectBtn = document.getElementById("mLogin-btn")
+    let loginWindow = document.getElementById("")
+}
+
 //function that makes font smaller ones text goes beyond an input tag
 function changefontsize() { 
     console.log('test');
@@ -8,7 +14,7 @@ function changefontsize() {
     } else if (characters >= 11 &&characters< 14) {
         nickname.style.fontSize = '16px';
     }else if(characters >= 14){
-        nickname.style.fontSize = '14px';
+        nickname.style.fontSize = '13px';
     } 
     else {
         nickname.style.fontSize = '24px';

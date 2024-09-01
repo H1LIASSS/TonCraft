@@ -17,42 +17,6 @@
             outline: 1px solid red;
         } */
 
-
-
-        section {
-            position: relative;
-            min-height: 100px;
-            padding: 80px 20vw;
-        }
-
-        .custom-shape-divider-top-1724516293 {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            overflow: hidden;
-            line-height: 0;
-        }
-
-        .custom-shape-divider-top-1724516293 svg {
-            position: relative;
-            display: block;
-            width: calc(100% + 1.3px);
-            height: 104px;
-        }
-
-        .custom-shape-divider-top-1724516293 .shape-fill {
-            fill: #90d7ee;
-        }
-
-        /** For mobile devices **/
-        @media (max-width: 767px) {
-            .custom-shape-divider-top-1724516293 svg {
-                width: calc(116% + 1.3px);
-                height: 86px;
-            }
-        }
-
         .cards-container {
             margin-top: 40px;
             display: flex;
@@ -72,7 +36,14 @@
             color: white;
             gap: 4px;
             padding: 10px 14px;
+            transition: 300ms;
 
+        }
+
+        .card:hover {
+            background-color: #a2ccff;
+
+            transition: 300ms;
         }
 
         .player {
@@ -83,12 +54,17 @@
         }
 
         #withdraw-btn {
-            background-color: rgb(242, 242, 0);
+            background-color: rgb(231, 231, 47);
             border: none;
             padding: 6px 14px;
             border-radius: 8px;
             margin-top: 10px;
             transition: 150ms ease-in;
+            text-align: center;
+            text-decoration: none;
+            color: black;
+            width: 92%;
+            align-self: center;
         }
 
         #withdraw-btn:hover {
@@ -107,30 +83,84 @@
             text-align: center;
             margin: 30px 0px;
             font-size: 2.5rem;
-            color: white;
+            color: rgb(137, 137, 137);
             text-decoration: none;
             transition: 200ms;
 
         }
 
         #pc-logo:hover {
-            color: rgb(221, 221, 221);
+            color: rgb(95, 95, 95);
             transition: 200ms;
         }
 
         body {
             margin: 0;
             padding: 0;
-            background-image: none;
-            background-color: #3a7cb3 !important;
-            /* background-color: #90d7ee !important; */
+            background-image: none !important;
+            background-color: #ecf4ff !important;
+            z-index: 0;
 
             overflow-y: hidden;
+        }
+
+        .wave {
+            width: 100vw;
+            position: absolute;
+            bottom: 0;
+        }
+
+        body>*:not(.wave-container) {
+            z-index: 99;
+            position: relative;
+        }
+
+        .wave-container {
+            background-color: green;
+            height: 80vh;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            background-image: url('./content/waves/stacked-waves-haikei\ \(8\).svg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: none;
+
+            z-index: 1;
+        }
+
+        .cards-value {
+            margin: none !important;
+            display: inline;
+        }
+
+        .footer-buttons {
+            width: 30%;
+            min-width: 300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .footer-btn {
+            font-weight: 100 !important;
+            font-size: clamp(14px, 2vw, 18px) !important;
+            text-decoration: none;
+            color: rgb(102, 7, 197);
+            transition: 150ms ease-out;
+        }
+
+        .footer-btn:hover {
+            color: rgb(136, 42, 229);
+            filter: drop-shadow(1px 1px 1px rgb(255, 255, 255));
+            transition: 100ms ease-in;
         }
     </style>
 </head>
 
 <body>
+    <div class="wave-container"></div>
+
     <a id='pc-logo' href="./main.html">TonCraft
     </a>
 
@@ -150,10 +180,13 @@
             <div class="card-balance" style="margin: 0 0 auto;">
                 <p style="margin: 0 0 10px;">Balance</p>
             </div>
-            <div class="card-property" style="color: rgb(66, 66, 66)">Pirates: </div>
-            <div class="card-property" style="color: rgb(66, 66, 66); margin: 0 0 auto;">Coins:</div>
+            <div class="card-property" style="color: rgb(66, 66, 66)">Pirates:<p id="pirates" class="cards-value"></p>
+            </div>
+            <div class="card-property" style="color: rgb(66, 66, 66); margin: 0 0 auto;">Coins:<p id="coins"
+                    class="cards-value"></p>
+            </div>
 
-            <button id="withdraw-btn">Withdraw</button>
+            <a id="withdraw-btn" href="https://t.me/MineTake_Bot" target="_blank">Withdraw</a>
         </div>
     </div>
 
@@ -172,9 +205,31 @@
     </section> -->
 
     <footer
-        style="position: absolute; bottom: 1rem; width: 100%; text-align: center; color: #D4E9FF; font-size: 1.2rem;">
-        <p>Withdrawn: 6,500$</p>
+        style="position: absolute; bottom: 3rem; width: 100%; text-align: center; color: #D4E9FF; font-size: 1.2rem;">
+        <h3 style="color: rgb(212, 233, 255)">Withdrawn: 6,500$</h3>
+        <div class="footer-buttons"><a href="" class="footer-btn">Support</a><a href="" class="footer-btn">About us</a>
+        </div>
     </footer>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('loaded');
+            fetchUserData();
+        })
+
+        function fetchUserData() {
+            // TODO: get actual nickname
+            nickname = 'hutsul';
+
+            fetch(`http://localhost:3000/userData?nickname=${nickname}`
+            ).then(response => response.json()).then(data => {
+                // TODO: display data on the personal cabinet cards
+                // console.log(Math.floor(data[0].Balance));
+                document.getElementById("pirates").innerHTML = Math.floor(data[0].Balance);
+            }).catch(err => console.log(`error: ${err}`));
+        }
+    </script>
 </body>
 
 </html>

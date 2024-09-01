@@ -21,10 +21,10 @@
         body {
             margin: 0;
             padding: 0;
-            background-image: none;
-            background-color: rgb(233, 177, 177);
             /* background-color: #90d7ee !important; */
             overflow-y: auto;
+            background-color: #ecf4ff !important;
+            /* background-image: url('./content/waves/stacked-waves-haikei\ \(8\).svg'); */
         }
 
         .wave {
@@ -32,12 +32,34 @@
             position: absolute;
             bottom: 0;
         }
+
+        .wave-container {
+            background-color: green;
+            height: 80vh;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            background-image: url('./content/waves/stacked-waves-haikei\ \(8\).svg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: none;
+        }
+
+        .cloud-container {
+            display: flex;
+            width: 100vw;
+            background-color: red;
+            height: 30vh;
+        }
     </style>
 </head>
 
 <body>
-    <img src="./content/waves/wave-haikei (2).svg" class="wave" style="z-index: 10;" alt="">
-    <img src="./content/waves/wave-haikei (3).svg" class="wave" style="z-index: 9; bottom: 300px;" alt="">
+    <div class="wave-container"></div>
+    <!-- <div class="cloud-container">
+        <img src="./content/ліва хмара.png" alt="">
+        <img src="./content/права хмаринка.png" alt="">
+    </div> -->
 </body>
 
 </html>

@@ -45,7 +45,11 @@
         <div class='nav-buttons nav-end'>
             <button class="nav-btn" , onclick="location.href='./map.html'">Map</button>
             <!-- <button class="nav-btn" , onclick="location.href='./earn.html'">Earn</button> -->
-            <a class="pc-container" href="./personalCabinet.html">
+            <!-- login button -->
+            <button id="mLogin-btn" class="btn" onclick="connectAccount()">Connect</button>
+
+            <!-- personal cabinet button -->
+            <a class="pc-container hide" href="./personalCabinet.html">
                 <img src="./content/skin-icon.png" alt="" class="skin-icon">
                 <p id="pc-name">Hutsul</p>
                 <div class="pc-balance">
@@ -53,17 +57,6 @@
                     <p id="pc-balance-val">69</p>
                 </div>
             </a>
-
-            <!-- <a href="./personalCabinet.html" class="pc-wrapper">
-                <div class="pc-container" style="outline: 1px solid green">
-                    <img src="./content/skin-icon.png" alt="" class="skin-icon">
-                    <p id="pc-name">Hutsul</p>
-                    <a class="pc-balance">
-                        <img src="./content/dollar.png" class="currency-img" alt="">
-                        <p id="pc-balance-val">69</p>
-                    </a>
-                </div>
-            </a> -->
         </div>
     </nav>
 

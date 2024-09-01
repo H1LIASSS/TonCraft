@@ -3,23 +3,53 @@ const cors = require('cors');
 const app = express();
 const {Rcon} = require('rcon-client');
 const crypto = require('crypto');
+const mysql = require('mysql2');
+
+app.use(cors());
+app.use(express.json());
 
 const rconConfig = {
     host: '65.21.70.46',
     port: 25719,
     password: 'y3c3yfpMXn'
 };
+// db setup
+const cmiDB = mysql.createConnection({
+    host: 'mysql-pl-wa2.joinserver.xyz',
+    user: 'u136036_cgI1eC8GWq',
+    password: '^dpptNy=OWa5Iicdf4Bn!e@h',
+    database: 's136036_CMI'
+});
 
+cmiDB.connect(err=>{
+    if(err){
+        console.log(`Couldn't connect to cmiDB`);
+        return;
+    }
+    console.log('connected to cmiDB');
+})
+
+app.get('/userData', (req,res)=>{
+    nickname = req.query.nickname;
+    console.log(nickname);
+
+    cmiDB.query('SELECT * FROM `CMI_users` WHERE `username` = ?', [nickname], (err, results)=>{
+        if(err){
+            res.status(500).json({error: err.message});
+            return;
+        }
+        res.json(results);
+    });
+
+})
+
+//generating verification code and sending it to the user
 function generateVerifCode(){
     return (crypto.randomInt(100000, 1000000));
 }
 
 let verificationCodes = {}; 
 
-app.use(cors());
-app.use(express.json());
-
-//generating verification code and sending it to the user
 app.post('/', async (req,res)=>{
     try{
         const{ nickname }= req.body;

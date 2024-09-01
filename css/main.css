@@ -61,6 +61,8 @@
     border: rgb(97, 73, 144) 4px solid;
 }
 
+
+
 .sidebar-btn-container {
     width: 100% !important;
     background-color: rgba(147, 112, 216, 0.767);
@@ -276,7 +278,17 @@
     width: auto;
 }
 
+#mLogin-btn {
+    background-color: rgba(0, 136, 255, 0.687);
+    border: none;
+    height: 60%;
+    align-self: center;
+    border-radius: 2px;
+}
 
+#mLogin-btn:hover {
+    background-color: rgba(0, 136, 255, 0.487);
+}
 
 @media only screen and (min-width: 1201px) {
     .hideOnDesktop {

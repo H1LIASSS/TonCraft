@@ -1,20 +1,30 @@
 // function that displays login pop up window when user click connect
 function connectAccount(){
-    let connectBtn = document.getElementById("mLogin-btn")
-    let loginWindow = document.getElementById("")
+    let connectBtn = document.getElementById("mLogin-btn");
+    let loginWindow = document.querySelector(".bg-blur"); //parent of the login-box
+    
+    loginWindow.classList.remove('hide');
+}
+
+function hideLogin(){
+    if(document.getElementById('verifCodeContainer').classList.contains('hide')){
+        let loginWindow = document.querySelector(".bg-blur"); //parent of the login-box
+        document.querySelectorAll('.login-input').forEach(i => i.value = '');
+        document.getElementById('textbox').innerText= '';
+        loginWindow.classList.add("hide");
+    }
 }
 
 //function that makes font smaller ones text goes beyond an input tag
 function changefontsize() { 
-    console.log('test');
     const nickname = document.getElementById('nickname');
     const characters = nickname.value.length;
-    if (characters >= 8 && characters < 11) {
+    if (characters >= 8 && characters < 10) {
         nickname.style.fontSize = '20px';
-    } else if (characters >= 11 &&characters< 14) {
+    } else if (characters >= 10 &&characters< 13) {
         nickname.style.fontSize = '16px';
-    }else if(characters >= 14){
-        nickname.style.fontSize = '13px';
+    }else if(characters >= 11){
+        nickname.style.fontSize = '12px';
     } 
     else {
         nickname.style.fontSize = '24px';
@@ -29,7 +39,7 @@ function loginClick(){
     textbox.classList.remove("error");
     function correctNickname(nickname){
         if (nickname.length < 3 || nickname.length > 16) {
-            textbox.innerHTML = "Nickname length should be between 3-16 characters";
+            textbox.innerHTML = (localStorage.getItem("lang") === 'en')?"Nickname length should be between 3-16 characters":"Длина никнейма должна быть от 3 до 16 символов";
             textbox.classList.add("error");
             return false;
         }
@@ -37,7 +47,7 @@ function loginClick(){
         // Check if nickname contains only letters, numbers, underscores, or hyphens
         const validPattern = /^[a-zA-Z0-9_-]+$/;
         if (!validPattern.test(nickname)) {
-            textbox.innerHTML = "Nicknames should only contain letters, numbers, underscores, or hyphens";
+            textbox.innerHTML = (localStorage.getItem('lang')==='en')?"Nicknames should only contain letters, numbers, underscores, or hyphens":"Никнеймы должны содержать только буквы, цифры, подчеркивания или дефисы";
 
             textbox.classList.add("error");
             return false;
@@ -62,7 +72,8 @@ function loginClick(){
         }).then(response => response.json()).then(data => {
             //if code is verified:
             if(data.success === true){
-                window.location.href = '../main.html';
+                sessionStorage.setItem('username', nickname);
+                window.location.href = './personalCabinet.html';
             }
             else{
                 textbox.classList.add('error')
@@ -78,13 +89,14 @@ function loginClick(){
             //show input tag for verif code, add message saying to write the verifcode.
             const vCode = document.getElementById("verifCodeContainer");
             vCode.classList.remove('hide');
-            textbox.innerHTML = "Please enter the 6-digit code we sent to you in Minecraft to continue";
+            textbox.innerHTML = (localStorage.getItem('lang') === 'en')?"Please enter the 6-digit code we sent to you in Minecraft to continue":
+            "Пожалуйста, введите 6-значный код, который мы отправили вам в Minecraft, чтобы продолжить";
             const loginBtn = document.getElementById('login-btn');
             loginBtn.innerText = "Verify";  
             loginBtn.onclick = verifyCode;
         }
         else{
-            textbox.innerHTML = "Player is not online";
+            textbox.innerHTML = (localStorage.getItem('lang') === 'en')?"Player is not online":"Игрок не в сети";
             textbox.classList.add("error");
         }
     }

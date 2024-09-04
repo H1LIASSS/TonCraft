@@ -4,7 +4,6 @@ const app = express();
 const {Rcon} = require('rcon-client');
 const crypto = require('crypto');
 const mysql = require('mysql2');
-
 app.use(cors());
 app.use(express.json());
 
@@ -13,6 +12,7 @@ const rconConfig = {
     port: 25719,
     password: 'y3c3yfpMXn'
 };
+// TODO: env variables
 // db setup
 const cmiDB = mysql.createConnection({
     host: 'mysql-pl-wa2.joinserver.xyz',

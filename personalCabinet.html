@@ -14,8 +14,8 @@
 
     <style>
         /* * {
-            outline: 1px solid red;
-        } */
+                outline: 1px solid red;
+            } */
 
         .cards-container {
             margin-top: 40px;
@@ -116,7 +116,6 @@
         }
 
         .wave-container {
-            background-color: green;
             height: 80vh;
             width: 100%;
             position: absolute;
@@ -135,25 +134,37 @@
         }
 
         .footer-buttons {
-            width: 30%;
-            min-width: 300px;
+            width: clamp(280px, 50%, 600px);
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
+            align-items: center;
         }
 
         .footer-btn {
             font-weight: 100 !important;
             font-size: clamp(14px, 2vw, 18px) !important;
             text-decoration: none;
-            color: rgb(102, 7, 197);
+            color: rgb(217, 217, 217);
             transition: 150ms ease-out;
         }
 
         .footer-btn:hover {
-            color: rgb(136, 42, 229);
-            filter: drop-shadow(1px 1px 1px rgb(255, 255, 255));
+            filter: drop-shadow(1px 1px 1px black);
             transition: 100ms ease-in;
+        }
+
+        #currentFlag {
+            /* position: absolute;
+            top: 14rem;
+            left: 2rem; */
+            height: 40px;
+            width: auto;
+            z-index: 999;
+        }
+
+        #currentFlag:hover {
+            cursor: pointer;
         }
     </style>
 </head>
@@ -169,7 +180,7 @@
         <div class="card">
             <div class="player" style="margin: 0 0 .6rem; text-align: center;">
                 <img src="./content/skin-icon.png" style="height: 1.6rem; width: auto;" alt="">
-                <p id="pc-name">Hutsul</p>
+                <p id="pc-name"></p>
             </div>
             <div class="card-property">Role: </div>
             <div class="card-property">Country: </div>
@@ -178,12 +189,14 @@
         </div>
         <div class="card">
             <div class="card-balance" style="margin: 0 0 auto;">
-                <p style="margin: 0 0 10px;">Balance</p>
+                Balance
             </div>
-            <div class="card-property" style="color: rgb(66, 66, 66)">Pirates:<p id="pirates" class="cards-value"></p>
+            <div class="card-property" style="color: rgb(66, 66, 66)"><span id="pirates-text">Pirates</span>
+                <p id="pirates" class="cards-value"></p>
             </div>
-            <div class="card-property" style="color: rgb(66, 66, 66); margin: 0 0 auto;">Coins:<p id="coins"
-                    class="cards-value"></p>
+            <div class="card-property" style="color: rgb(66, 66, 66); margin: 0 0 auto;"><span
+                    id="coins-text">Coins</span>
+                <p id="coins" class="cards-value"></p>
             </div>
 
             <a id="withdraw-btn" href="https://t.me/MineTake_Bot" target="_blank">Withdraw</a>
@@ -191,43 +204,91 @@
     </div>
 
     <!-- <section style="background-color: #1232a2; height: 100px; position: absolute; bottom: 0; left: 0; right: 0;">
-        <h1 style="width: fit-content;color: gray; font-size: 1rem; margin-top: 80px; white-space: nowrap;">
-            Выведено:
-            6,500$</h1>
-        <div class="custom-shape-divider-top-1724516293">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
-                preserveAspectRatio="none">
-                <path
-                    d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-                    class="shape-fill"></path>
-            </svg>
-        </div>
-    </section> -->
+            <h1 style="width: fit-content;color: gray; font-size: 1rem; margin-top: 80px; white-space: nowrap;">
+                Выведено:
+                6,500$</h1>
+            <div class="custom-shape-divider-top-1724516293">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                    preserveAspectRatio="none">
+                    <path
+                        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+                        class="shape-fill"></path>
+                </svg>
+            </div>
+        </section> -->
 
     <footer
         style="position: absolute; bottom: 3rem; width: 100%; text-align: center; color: #D4E9FF; font-size: 1.2rem;">
-        <h3 style="color: rgb(212, 233, 255)">Withdrawn: 6,500$</h3>
-        <div class="footer-buttons"><a href="" class="footer-btn">Support</a><a href="" class="footer-btn">About us</a>
+
+        <h3 style="color: rgb(212, 233, 255); font-size: clamp(14px, 5vw, 40px);"><span
+                id="withdrawn-text">Withdrawn</span>6,500$</h3>
+        <div class="footer-buttons">
+            <a href="" class="footer-btn">Support</a>
+            <a href="" class="footer-btn">About us</a>
+            <img src="./content/languages/uk.png" id='currentFlag' onclick="toggleLanguage()" alt="en">
+
         </div>
     </footer>
 
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            console.log('loaded');
-            fetchUserData();
+            //username
+            document.getElementById('pc-name').innerText = sessionStorage.getItem('username');
+
+            //lang change
+            let lang = localStorage.getItem('lang') || 'en';
+            localStorage.setItem('lang', lang);
+
+            toggleFlag();
+            toggleLanguage(false);
         })
 
-        function fetchUserData() {
-            // TODO: get actual nickname
-            nickname = 'hutsul';
+        function toggleLanguage(toggle = true) {
+            if (toggle) localStorage.setItem('lang', (localStorage.getItem('lang') === 'en' ? 'ru' : 'en'));
+            toggleFlag();
 
-            fetch(`http://localhost:3000/userData?nickname=${nickname}`
-            ).then(response => response.json()).then(data => {
-                // TODO: display data on the personal cabinet cards
-                // console.log(Math.floor(data[0].Balance));
-                document.getElementById("pirates").innerHTML = Math.floor(data[0].Balance);
-            }).catch(err => console.log(`error: ${err}`));
+            let lang = localStorage.getItem('lang');
+            document.querySelectorAll('.card-property')[0].innerText = translations[lang].Role;
+            document.querySelectorAll('.card-property')[1].innerText = translations[lang].Country;
+            document.querySelector('.card-balance').innerText = translations[lang].Balance;
+            document.getElementById('pirates-text').innerText = translations[lang].Pirates;
+            document.getElementById('coins-text').innerText = translations[lang].Coins;
+            document.getElementById('withdrawn-text').innerText = translations[lang].Withdrawn;
+            document.querySelectorAll(".footer-btn")[0].innerText = translations[lang].support;
+            document.querySelectorAll(".footer-btn")[1].innerText = translations[lang].aboutUs;
+
+        }
+
+        const translations = {
+            en: {
+                Role: "Role:",
+                Country: "Country:",
+                Balance: "Balance",
+                Pirates: "Pirates:",
+                Coins: "Coins:",
+                Withdraw: "Withdraw",
+                Withdrawn: "Withdrawn:",
+                support: "Support",
+                aboutUs: "About us"
+            },
+            ru: {
+                Role: "Роль:",
+                Country: "Страна:",
+                Balance: "Баланс",
+                Pirates: "Пираты:",
+                Coins: "Монеты:",
+                Withdraw: "Вывести",
+                Withdrawn: "Выведено:",
+                support: "Поддержка",
+                aboutUs: "О нас"
+            }
+        };
+
+
+        function toggleFlag() {
+            let currentFlag = document.getElementById("currentFlag");
+            currentFlag.src = (localStorage.getItem('lang') === 'ru') ? "./content/languages/russia.png" : "./content/languages/uk.png";
         }
     </script>
 </body>

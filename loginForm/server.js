@@ -17,7 +17,7 @@ const rconConfig = {
 const cmiDB = mysql.createConnection({
     host: 'mysql-pl-wa2.joinserver.xyz',
     user: 'u136036_cgI1eC8GWq',
-    password: '^dpptNy=OWa5Iicdf4Bn!e@h',
+    password: '@cfGHNrnsTN9heQsqhL!=X.y',
     database: 's136036_CMI'
 });
 
@@ -42,7 +42,16 @@ app.get('/userData', (req,res)=>{
     });
 
 })
-
+app.get('/getOnline', async (req,res)=>{
+    const rcon = await Rcon.connect(rconConfig);
+    const response = await rcon.send('list');
+    let online = response.match(/There are §c(\d+)§6/);
+    if(online[1]){
+        let onlineCount = online[1];
+        res.json(onlineCount);
+    }
+    else res.json(0);
+})
 //generating verification code and sending it to the user
 function generateVerifCode(){
     return (crypto.randomInt(100000, 1000000));
@@ -63,12 +72,11 @@ app.post('/', async (req,res)=>{
         const rcon = await Rcon.connect(rconConfig);
         const verifCode = generateVerifCode();  
         // const response = await rcon.send(`msg ${nickname} Your verification code is: ${verifCode}`);
-        const response = await rcon.send(`kick ${nickname} Your verification code is: ${verifCode}`);
+        const response = await rcon.send(`msg ${nickname} Your verification code is: ${verifCode}`);
         await rcon.end();
 
-        console.log(`${response.includes(`вышел`)}`);
         //checks whether or not the player was online
-        if(response.includes(`вышел`)){
+        if(response === ''){
             //stores the verification code for 2 minutes
             verificationCodes[nickname] = verifCode;
             setTimeout(()=>{

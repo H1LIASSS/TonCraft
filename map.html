@@ -1,44 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Map</title>
-    <link rel="shortcut icon" href="content/logotype.png"/>
-    <link rel="stylesheet" href="css/mainstyles.css">
-    <link rel="stylesheet" href="css/defaultvalues.css">
-    <style>
-     body, html {
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Map</title>
+  <link rel="shortcut icon" href="content/logotype.png" />
+  <link rel="stylesheet" href="css/mainstyles.css">
+  <link rel="stylesheet" href="css/defaultvalues.css">
+  <style>
+    body,
+    html {
       height: 100%;
       margin: 0;
       display: flex;
       align-items: center;
       justify-content: center;
     }
+
     iframe {
       border: none;
       width: 700px;
       height: 500px;
+      margin: auto;
     }
 
     .logo {
       font-family: 'Press Start 2P', arial, sans-serif;
-      position: absolute; 
-      bottom: 20px; /* Отступ от низа страницы */
+      position: absolute;
+      bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
       font-size: 20px;
       font-weight: bold;
       color: white;
       background-color: black;
-      padding: 10px; /* Добавляет внутренние отступы */
+      padding: 10px;
     }
-    </style>
+
+    #logo {
+      position: absolute;
+      top: 1rem;
+      margin: 0 auto;
+      color: white;
+      font-size: 3rem;
+      transition: 200ms;
+      user-select: none;
+    }
+
+    #logo:hover {
+      cursor: pointer;
+      color: rgba(255, 255, 255, 0.767);
+      transition: 200ms;
+    }
+  </style>
 
 </head>
+
 <body>
-    <script src="js/stars.js"></script>     
-    <iframe src="http://z3.joinserver.xyz:25610/" title="Dynmap"></iframe>
-    <div class='logo'>ip: TonCraft.com</div>
+  <script src="js/stars.js"></script>
+  <div id='logo' onclick="location.href = `./main.html`">TonCraft</div>
+  <iframe src="http://z3.joinserver.xyz:25610/" title="Dynmap"></iframe>
+  <div class='logo'>ip: TonCraft.com</div>
 </body>
+
 </html>

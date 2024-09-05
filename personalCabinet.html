@@ -27,6 +27,7 @@
 
         .card {
             background-color: #aed2ff;
+            border: 2px solid #8dc0ff;
             width: 80%;
             max-width: 360px;
             border-radius: 8px;
@@ -44,13 +45,6 @@
             background-color: #a2ccff;
 
             transition: 300ms;
-        }
-
-        .player {
-            /* margin: 6px 0; */
-            color: black;
-            width: 40%;
-            height: 10%;
         }
 
         #withdraw-btn {
@@ -74,8 +68,12 @@
         }
 
         .player {
+            color: black;
+            width: 40%;
+            height: 10%;
             display: flex;
             align-items: center;
+            gap: 6px;
         }
 
         #pc-logo {
@@ -233,6 +231,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            fillData();
             //username
             document.getElementById('pc-name').innerText = sessionStorage.getItem('username');
 
@@ -289,6 +288,16 @@
         function toggleFlag() {
             let currentFlag = document.getElementById("currentFlag");
             currentFlag.src = (localStorage.getItem('lang') === 'ru') ? "./content/languages/russia.png" : "./content/languages/uk.png";
+        }
+
+        function fillData() {
+            fetch(`http://localhost:3000/userData?nickname=${sessionStorage.getItem('username')}`).then(response => {
+                if (!response.ok) return '...';
+                return response.json();
+            }).then(data => {
+                document.getElementById('pirates').innerText = data[0].Balance;
+                //TODO: other rows
+            })
         }
     </script>
 </body>

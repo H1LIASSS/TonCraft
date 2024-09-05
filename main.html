@@ -44,33 +44,17 @@
         </div>
     </div>
 
-
-
-    <!-- <div class="stars">
-        <script src="js/stars.js"></script> -->
-
     <nav id="navbar" class="hideOnMobile">
         <div class='nav-buttons'>
-            <!-- TODO: add functionality -->
             <div class="lang-change" onclick="toggleLanguage()">
                 <img src="./content/languages/uk.png" id='currentFlag' style="height: 40px; width: auto;" alt="English">
             </div>
-
-            <!-- <button class="btn" id="lang" , onclick="changeLanguange()">EN</button> -->
-            <!-- <div class="dropdown">
-                <button class="dropbtn nav-btn"> </button>
-                <div class="dropdown-content">
-                    <a href="#" , onclick="location.href='./earn.html'" \>Earn</a>
-                    <a href="#" , onclick="location.href='./partners.html'" \>Partners</a>
-                </div>
-            </div> -->
             <button class="nav-btn">Other</button>
             <button class="nav-btn" , onclick="location.href='./donate.html'">Donate</button>
         </div>
         <div id='logo'>TonCraft</div>
         <div class='nav-buttons nav-end'>
             <button class="nav-btn" , onclick="location.href='./map.html'">Map</button>
-            <!-- <button class="nav-btn" , onclick="location.href='./earn.html'">Earn</button> -->
             <!-- login button -->
             <button id="mLogin-btn" class="btn" onclick="connectAccount()">Connect</button>
 
@@ -106,7 +90,7 @@
         <button id="mLogin-sbtn" class="btn" onclick="connectAccount()">Connect</button>
         <a class="pc-container hide" href="./personalCabinet.html">
             <img src="./content/skin-icon.png" alt="" class="skin-icon">
-            <p class="pc-name">Hutsul</p>
+            <p class="pc-name"></p>
             <div class="pc-balance">
                 <img src="./content/dollar.png" class="currency-img" alt="">
                 <p id="pc-balance-val">69</p>
@@ -127,12 +111,14 @@
         <!-- <button class="btn" style="margin-top: auto;" id="lang" , onclick="changeLanguange()">EN</button> -->
     </nav>
 
-    <!-- TODO: work on the onhover func & move-up-down class -->
-    <!-- <div id="earth-container" class="">
-        <img id='earth' src="content/earth.png" , onhover="func()" , class="move-up-down" />
-    </div> -->
 
-    <!-- desktop nav bar.: -->
+    <div id="earth-container" onclick="toggleOnline()">
+        <div class="hide" id="sign-container">
+            <img src="./content/online-sign2-removebg-preview (1) (1).png" id="sign-img" alt="">
+            <p class="online-txt">Online: <br /><span id="online"></span></p>
+        </div>
+        <img src="./content/earth.png" alt="" id="earth-img">
+    </div>
 
     <script src="./loginForm/login.js"></script>
     <script>
@@ -228,6 +214,24 @@
         }
         const mediaQuery = window.matchMedia("(min-width: 1201px)")
         mediaQuery.addEventListener('change', handleWidthChange);
+
+        function toggleOnline() {
+            let sign = document.getElementById('sign-container');
+            sign.classList.toggle('hide');
+            if (!sign.classList.contains('hide')) {
+                updateOnline();
+                let updateInterval = setInterval(updateOnline, 5000);
+            } else clearInterval(updateInterval);
+        }
+
+        function updateOnline() {
+            fetch('http://localhost:3000/getOnline').then(response => response.json()).then(onlineCount => {
+                document.getElementById("online").innerText = onlineCount;
+            }).catch(err => {
+                documet.getElementById('online').innerText = 0;
+                console.log(err)
+            });
+        }
     </script>
 </body>
 

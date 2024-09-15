@@ -6,7 +6,7 @@
     "devStart": "nodemon server.js"
   },
   "keywords": [],
-  "author": "Cloudvy",
+  "author": "#1S.",
   "license": "MIT",
   "description": "",
   "dependencies": {
